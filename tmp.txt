@@ -1,0 +1,116 @@
+
+Gitリポジトリの作成
+
+mkdir {your directory}
+cd {your directory}
+git init
+
+既存のプロジェクトをGit管理下に置く
+cd {your project directory}
+git init .
+
+Gitリポジトリの状態を確認
+
+git status
+
+Untracked filesとは
+前回のスナップショット時には存在しなかったファイル
+
+ステージングエリアへファイルを追加
+
+git add ファイル名
+
+すべてのファイルを追加
+git add .
+
+ワーキングディレクトリとステージングエリアの差分を確認
+git diff
+
+コミット
+git commit
+
+テキストエディタが起動するので1行目にコミット内容の要約、2行目を空行、3行目を変更の概要や詳細を記述する。
+テキストエディタを閉じるとコミットが実行される
+
+修正分を一気にコミット(addとcommitの合わせ技)
+git commit -a -m {commit message}
+※ 新規に追加したファイルは-a ではコミット対象に含まれない
+
+コミット履歴を参照
+git log
+
+コミットを取り消す
+
+ワーキングディレクトリの状態を直前の状態まで戻す（作業内容を破棄）
+git reset --hard
+
+ブランチの位置を{commit id}まで戻しつつステージングエリアをその時の状態まで戻す。ワーキングディレクトリの作業内容はそのまま
+複数回に分けていたコミットを１回にまとめたい場合などで使用
+git reset {commit id}
+
+ワーキングディレクトリの内容も戻す
+git reset --hard {commit id}
+
+ワーキングディレクトリの対象外のファイルを戻す(ファイルを消す)
+
+削除対象ファイルを確認
+git clean -n
+
+削除
+git clean -f
+
+ディレクトリの場合
+git clean -nd
+git clean -fd
+
+コミット履歴の件数を制限
+git log -n {limit count}
+
+コミット内容を１行に圧縮
+git log --oneline
+
+追加行数と削除行数を表示
+git log --stat
+
+完全な差分情報を表示
+git log -p
+
+直近のコミット数のコミット履歴を表示
+git log -p - {limit count}
+
+指定したファイルのコミット履歴を表示
+git log {file name}
+
+直近のコミットを修正
+直近のコミットにコミット漏れファイルがあった。
+git add .
+git commit --amend
+テキストエディタが起動する
+
+コミットメッセージは修正不要
+git commit --amend --no-edit
+
+コミットメッセージを修正する
+git commit --amend
+
+
+ファイルのチェックアウト（ファイルの状態が戻る）
+git checkout {file name}
+
+コミットIDのチェックアウト（閲覧だけ）
+git checkout {commit id}
+
+
+プッシュ originはリポジトリ名？ git push origin master
+
+ブランチ一覧表示 git branch
+
+ブランチ作成 git branch {branch name}
+
+ブランチを切り替える git checkout {branch name}
+
+ブランチの名称の変更 git branch -m {branch name}
+
+ブランチを削除 git branch -d {branch name}
+
+ブランチを削除 マージされていないコミットがある場合でも強制的に削除 git branch -D {branch name}
